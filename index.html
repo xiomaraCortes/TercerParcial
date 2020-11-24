@@ -19,57 +19,45 @@
         </div>
     </header>
 
-    <section>
-        <div class="container">
-            <input id="search" class="search" type="text" placeholder="Search for a country">
-            <div class="dropdown" id="filter">
-                Filter by Region <i class="fas fa-chevron-down"></i>
-                <ul>
-                    <li>All</li>
-                    <li>Africa</li>
-                    <li>Americas</li>
-                    <li>Asia</li>
-                    <li>Europe</li>
-                    <li>Oceania</li>
-                </ul>
+    <main class="main">
+        <div class="search-filter">
+          <input
+            type="text"
+            class="search"
+            placeholder="Search for a country..."
+          />
+          <i class="fas fa-search search-icon"></i>
+  
+          <div class="filter">
+            <div class="filter-tab">
+              Filter by Region
+              <i class="fas fa-chevron-down filter-icon"></i>
             </div>
-
+            <ul class="filter-options hidden">
+              <li class="filter-option">Africa</li>
+              <li class="filter-option">Americas</li>
+              <li class="filter-option">Asia</li>
+              <li class="filter-option">Europe</li>
+              <li class="filter-option">Oceania</li>
+            </ul>
+          </div>
         </div>
-    </section>
+  
+        <div class="countries"></div>
+  
+        <div class="page-buttons"></div>
+      </main>
 
-    <div class="modal" id="modal">
-        <button id="close" class="btn-close"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
-        <div class="image-div">
-
-            <img src="" alt="">
+      <section class="detail hidden">
+        <div class="container">
+          <button class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back
+          </button>
+  
+          <div class="country-detail"></div>
         </div>
-        <div class="modal-upper">
-            <h2 class="country-name"></h2>
-            <p class="native-name"></p>
-            <p class="population"></p>
-            <p class="region"></p>
-            <p class="sub-region"></p>
-            <p class="capital"></p>
-        </div>
-        <div class="modal-middle">
-            <p class="domain"></p>
-            <p class="currency"></p>
-            <p class="language"></p>
-        </div>
-        <div class="border"></div>
-    </div>
-
-    <section>
-        <div class="container" id="countries">
-
-            <h2>Countries Loading...</h2>
-        </div>
-    </section>
-
-
-
-
-
+      </section>
 </body>
 
 </html>
