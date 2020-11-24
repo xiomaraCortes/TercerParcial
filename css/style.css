@@ -1,0 +1,57 @@
+
+
+html{
+    font-size:14px;
+}
+    
+
+body{
+    height: 100vh
+}
+    
+
+.header{
+    height: 8%;
+    background-color: hsl(209, 23%, 22%);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem
+}
+    
+
+.title
+{
+    font-weight: 800;
+}
+   
+
+title:hover{
+    cursor: pointer;
+}
+       
+
+.mode-select{
+    font-weight: 600;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+    
+
+mode-select:hover{
+    cursor: pointer
+}
+        
+
+.mode-icon{
+    margin-right: 1rem;
+}
+   
+
+.main{
+    background-color: hsl(209, 23%, 22%);
+    min-height: 92%;
+    padding-bottom: 2rem;
+}
