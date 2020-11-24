@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries API</title>
+</head>
+
+<body class="dark">
+    <header>
+        <div class="container">
+            <h1>Where in the world?</h1>
+            <button class="btn-toggle" id="toggle">
+                <i class="far fa-moon"></i>
+                <i class="fas fa-moon"></i>
+                 Dark Mode
+            </button>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <input id="search" class="search" type="text" placeholder="Search for a country">
+            <div class="dropdown" id="filter">
+                Filter by Region <i class="fas fa-chevron-down"></i>
+                <ul>
+                    <li>All</li>
+                    <li>Africa</li>
+                    <li>Americas</li>
+                    <li>Asia</li>
+                    <li>Europe</li>
+                    <li>Oceania</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="modal" id="modal">
+        <button id="close" class="btn-close"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+        <div class="image-div">
+
+            <img src="" alt="">
+        </div>
+        <div class="modal-upper">
+            <h2 class="country-name"></h2>
+            <p class="native-name"></p>
+            <p class="population"></p>
+            <p class="region"></p>
+            <p class="sub-region"></p>
+            <p class="capital"></p>
+        </div>
+        <div class="modal-middle">
+            <p class="domain"></p>
+            <p class="currency"></p>
+            <p class="language"></p>
+        </div>
+        <div class="border"></div>
+    </div>
+
+    <section>
+        <div class="container" id="countries">
+
+            <h2>Countries Loading...</h2>
+        </div>
+    </section>
+
+
+
+
+
+</body>
+
+</html>
