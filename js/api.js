@@ -44,7 +44,6 @@ console.time("get countries ")
          //  console.log(country);
      });
 
-     //* ***********************************
 
      console.timeEnd("display countries");
  };
