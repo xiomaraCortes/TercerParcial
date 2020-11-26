@@ -5,7 +5,7 @@
 */
 
 const restAPI = "https://restcountries.eu/rest/v2/all";
-// console.log(restAPI)
+console.log(restAPI)
 
 // se crean las variables las cuales estan especificadas en el index 
 const countriesEl = document.getElementById("countries");
@@ -16,6 +16,7 @@ const searchEl = document.getElementById("search");
 const modal = document.getElementById("modal");
 const closeBtn = document.getElementById("close");
 
+//Funcion para consumir json 
 console.time("get countries ")
  getCountries();
 
@@ -23,32 +24,24 @@ console.time("get countries ")
      const res = await fetch(restAPI);
      const countries = await res.json();
 
-     console.time("display countries")
-
      displayCountries(countries);
-     console.log(countries.length + " countries");
-
      //* Trying localStorage ****************
 
      localStorage.setItem("countriesObject", JSON.stringify(countries));
 
      let cObj = JSON.parse(localStorage.getItem("countriesObject"));
 
-     //  let bigObject = JSON.parse(cObj);
+     //  let bigObject = JSON.parse(cObj);q
 
      //  console.log(bigObject)
 
      //  console.log(cObj);
 
      cObj.forEach(country => {
-         //  console.log(country);
+          console.log(country);
      });
 
-
-     console.timeEnd("display countries");
  };
-
- console.timeEnd("get countries ");
 
  function displayCountries(countries) {
      countriesEl.innerHTML = "";
@@ -98,3 +91,17 @@ closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
+//Buscador de paises por nombre
+
+searchEl.addEventListener("input", (e) => {
+    const val = e.target.value;
+    let names = document.querySelectorAll(".name");
+    names.forEach(name => {
+        if (name.innerText.toLowerCase().includes(val.toLowerCase())) {
+            name.parentElement.parentElement.style.display = "block"
+        } else {
+            name.parentElement.parentElement.style.display = "none"
+        }
+
+    });
+});
