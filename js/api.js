@@ -105,3 +105,72 @@ searchEl.addEventListener("input", (e) => {
 
     });
 });
+
+
+//Filtro de droplist
+regionFilter.forEach(filter => {
+    const value = filter.innerText;
+    filter.addEventListener("click", () => {
+        const regions = document.querySelectorAll(".region");
+        regions.forEach(region => {
+
+            if (region.innerText.includes(value) || value === "All") {
+                region.parentElement.parentElement.style.display = "block"
+            } else {
+                region.parentElement.parentElement.style.display = "none"
+            }
+        });
+    });
+});
+
+var countryBorders = [];
+
+function fillModal(country, countries) {
+    let num = 250;
+    modal.querySelector("img").setAttribute("src", country.flag);
+    modal.querySelector(".country-name").innerHTML = country.name;
+    //  modal.querySelector(".name").setAttribute("dataCioc", country.cioc);
+    modal.querySelector(".native-name").innerHTML = `<strong>Native Name: </strong><span>${country.nativeName}</span>`;
+    modal.querySelector(".population").innerHTML = `<strong>Population: </strong><span>${country.population.toLocaleString()}</span>`;
+    modal.querySelector(".region").innerHTML = `<strong>Region: </strong><span>${country.region}</span>`;
+    modal.querySelector(".sub-region").innerHTML = `<strong>Sub Region: </strong><span>${country.subregion}</span>`;
+    modal.querySelector(".capital").innerHTML = `<strong>Capital: </strong><span>${country.capital}</span>`;
+    modal.querySelector(".domain").innerHTML = `<strong>Top Level Domain: </strong><span style="font-weight: 600;"><blue>${country.topLevelDomain[0]}</blue></span>`;
+    if (country.currencies.length == "1") {
+        modal.querySelector(".currency").innerHTML = `<strong>Currencies: </strong> <span> Name: <blue style="">${country.currencies[0].name}</blue></span> Code: <blue style="">${country.currencies[0].code}</blue><span> Simbol: <blue style="">${country.currencies[0].symbol}</blue></span>`;
+    } else {
+        modal.querySelector(".currency").innerHTML = `<strong>Currencies: </strong><span>${country.currencies.map(currency => currency.name).join(", ")}</span>`;
+    }
+    if (country.languages.length == "1") {
+        modal.querySelector(".language").innerHTML = `<strong>Languages: </strong><span>${country.languages[0].name}</span>`;
+    } else {
+        modal.querySelector(".language").innerHTML = `<strong>Languages: </strong><span>${country.languages.map(language => language.name).join(", ")}</span>`;
+    }
+
+    if (country.borders.length == "1") {
+        modal.querySelector(".border").innerHTML = `<strong>Borders: </strong><p id="cioc" style="display: inline-block;"></p>`;
+        getBorder(country);
+    } else if (country.borders.length == "0") {
+        modal.querySelector(".border").innerHTML = `<strong>Borders: </strong><span>None</span>`;
+    } else {
+        modal.querySelector(".border").innerHTML = `<strong>Borders: </strong><p id="cioc" style="display: inline-block;"></p>`;
+        getBorder(country);
+    }
+
+    function getBorder(country) {
+        country.borders.forEach(border => {
+            countries.forEach(coun => {
+                if (coun.alpha3Code == border) {
+                    let cioc = document.getElementById("cioc");
+                    cioc.innerHTML += `<span>${coun.name}</span>`;
+                }
+            })
+        })
+    };
+};
+
+let bbb = JSON.parse(localStorage.getItem("countriesObject"));
+
+window.addEventListener("unload", function(e) {
+    localStorage.removeItem("countriesObject");
+});
